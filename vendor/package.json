@@ -1,14 +1,17 @@
 {
-  "name": "csps",
+  "name": "vendor",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node vendor.js",
     "lint": "eslint **/*.js",
     "test": "jest --verbose --coverage",
     "test-watch": "jest --watchAll --verbose --coverage"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "faker": "^4.1.0"
+  }
 }
