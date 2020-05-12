@@ -11,7 +11,7 @@
 - [Net Docs](https://node.readthedocs.io/en/latest/api/net/)
 
 ## Submission PR
-- 
+- [Pull Request](https://github.com/SianCulligan/401Lab_17/pull/1)
 - No .env
 
 ## How to initialize/run your application 
@@ -22,4 +22,4 @@
 - 3. Start the driver.js file by typing out ``node driver.js``
 
 ## UML
-![Socket UML](SocketUML.png)
+![Socket UML][SocketUML.png]
