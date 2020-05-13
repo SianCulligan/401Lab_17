@@ -6,34 +6,38 @@ const server = net.createServer();
 let socketPool = [];
 let port = process.env.PORT || 3000;
 
-//DONE needs to be up first so that it can accept socket connections
 server.listen(port, () => {
   console.log('Server is up & running on port', port);
 });
 
+const logger = (payload) => {
+  // console.log('got', JSON.parse(payload.toString()));
+  let parsed = JSON.parse(payload.toString());
+  for(let i = 0; i < socketPool.length; i++) {
+    let socket = socketPool[i];
+    socket.write(payload);
+  }
+  
+  if(parsed.event === 'pickup') {
+    console.log('pickup');
+    console.log('- Time: ', new Date());
+    console.log('- Store: ', parsed.order.store);
+    console.log('- Order ID: ', parsed.order.id);
+    console.log('- Customer: ', parsed.order.name);
+    console.log('- Address: ', parsed.order.address);
+  }
 
-//DONE create a pool of connected sockets and read incoming data from a single socket, broadcasting that information back to all connected sockets.
-//check npm net for different events
-server.on('connection', socket => {
+  if (parsed.event === 'in-transit') {
+    console.log('In transid, order ', parsed.order.id);
+  }
+  if (parsed.event === 'Delivered') {
+    console.log('Delivered order ', parsed.order.id);
+  }
+};
+
+server.on('connection', (socket) => {
   //socket pool
-  socketPool.push(socket);
   console.log('Received connection from', socket.address());
-
-  socket.on('data', (payload) => {
-    console.log(JSON.parse(Buffer.from(payload.id).toString()));
-
-    //send something to complete pool
-    for(let i = 0; i < socketPool.length; i++) {
-      socket.write('picked up order', payload.id);
-    }
-    if (socketPool.length > 0) {
-      //send something to single socket
-      // Writes ONE!!! to driver,js console
-      socketPool[0].write(`ONE!!!`); 
-    }
-    // Writes TWO@@@ to vendor.js console
-    if (socketPool.length === 2) {
-      socketPool[1].write(`TWO@@@`); 
-    }
-  });
+  socketPool.push(socket);
+  socket.on('data', (logger));
 });

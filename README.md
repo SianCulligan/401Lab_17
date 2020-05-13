@@ -22,4 +22,4 @@
 - 3. Start the driver.js file by typing out ``node driver.js``
 
 ## UML
-[Socket UML](./assets/SocketUML.png)
+![Socket UML](./assets/SocketUML.png)
