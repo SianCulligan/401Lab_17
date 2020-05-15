@@ -20,7 +20,7 @@ setInterval(() => {
   // get path from npm faker
     let order = {
       store: faker.company.companyName(),
-      id: faker.name.uuid(),
+      id: faker.random.uuid(),
       time: faker.date.recent(),
       name: faker.name.firstName() + ' ' + faker.name.lastName(),
       street: faker.address.streetAddress() + ', ' + faker.address.city() + ', ' + faker.address.state(),
