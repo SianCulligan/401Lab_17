@@ -12,6 +12,7 @@
 
 ## Submission PR
 - [Pull Request](https://github.com/SianCulligan/401Lab_17/pull/1)
+- [Resubmit PR](https://github.com/SianCulligan/401Lab_17/pull/2)
 - No .env
 
 ## How to initialize/run your application 
